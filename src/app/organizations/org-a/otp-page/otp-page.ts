@@ -104,6 +104,8 @@ export class OtpPage {
   resendOtp() {
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
     localStorage.setItem("otp", newOtp);
+    this.storedOtp = newOtp;
+    console.log(newOtp);
     this.startTimer();
   }
 

@@ -24,7 +24,7 @@
                         (input)="collectOtp()" (keydown.backspace)="movePrev($event,5)" required>
                 </div>
 
-                <button mat-raised-button class="primary-button" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
+                <button mat-raised-button class="primary-button w-20" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
             </form>
             <p><span *ngIf="otpExpired" class="resend-otp" (click)="resendOtp()"> Resend OTP </span> <span *ngIf="!otpExpired">Resend OTP in {{timeLeft}} Sec </span></p>
         </div>
