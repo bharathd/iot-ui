@@ -1,1 +1,33 @@
-<p>otp-page works!</p>
+<div class="bg-container">
+    <div class="main-bg">
+        <div class="header-logo">
+            <img src="../assets/images/kapila-logo.svg" alt="Kapila Hotel" />
+        </div>
+        <div class="wifi-circle">
+            <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
+        </div>
+        <div class="flex-column mt-3">
+            <div class="flex-center">
+                <mat-icon class="back-arrow" routerLink="../login">keyboard_backspace</mat-icon>
+                <h1 class="wifi-title">Verify Your Identity</h1>
+            </div>
+            <p class="wifi-desc">Enter the 6-digit code sent to +91{{storedNumber}}</p>
+
+            <form [formGroup]="otpForm" class="otp-wrapper" (ngSubmit)="verifyOtp()" class="flex-column">
+                <div class="flex-center">
+                    <input #otpInput maxlength="1" class="otp-input" formControlName="d1" (keypress)="restrictToNumber($event)" (input)="moveNext($event,0)" (keydown.backspace)="movePrev($event,0)" required>
+                    <input #otpInput maxlength="1" (keypress)="restrictToNumber($event)" class="otp-input" formControlName="d2" (input)="moveNext($event,1)" (keydown.backspace)="movePrev($event,1)" required>
+                    <input #otpInput maxlength="1" (keypress)="restrictToNumber($event)" class="otp-input" formControlName="d3" (input)="moveNext($event,2)" (keypress)="restrictToNumber($event)" (keydown.backspace)="movePrev($event,2)" required>
+                    <input #otpInput maxlength="1" (keypress)="restrictToNumber($event)" class="otp-input" formControlName="d4" (input)="moveNext($event,3)" (keypress)="restrictToNumber($event)" (keydown.backspace)="movePrev($event,3)" required>
+                    <input #otpInput maxlength="1" (keypress)="restrictToNumber($event)" class="otp-input" formControlName="d5" (input)="moveNext($event,4)"(keydown.backspace)="movePrev($event,4)" required>
+                    <input #otpInput maxlength="1" (keypress)="restrictToNumber($event)" class="otp-input" formControlName="d6"
+                        (input)="collectOtp()" (keydown.backspace)="movePrev($event,5)" required>
+                </div>
+
+                <button mat-raised-button class="primary-button" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
+            </form>
+            <p><span *ngIf="otpExpired" class="resend-otp" (click)="resendOtp()"> Resend OTP </span> <span *ngIf="!otpExpired">Resend OTP in {{timeLeft}} Sec </span></p>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>

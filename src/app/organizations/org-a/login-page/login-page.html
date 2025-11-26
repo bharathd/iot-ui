@@ -1,1 +1,31 @@
-<p>login-page works!</p>
+<div class="bg-container">
+    <div class="main-bg">
+        <div class="header-logo">
+            <img src="../assets/images/kapila-logo.svg" alt="Kapila Hotel" />
+        </div>
+        <div class="wifi-circle">
+            <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
+        </div>
+        <div class="flex-column mt-3">
+            <h1 class="wifi-title">Unlock free WiFi around</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>User Name</mat-label>
+                    <input matInput placeholder="Enter your name" formControlName="userName" required type="text" class="user-input"/>
+                    <mat-error *ngIf="hasError('userName', 'required')"> User Name is required </mat-error>
+                    <mat-error *ngIf="hasError('userName', 'minlength')">Required minimum three chracters </mat-error>
+                </mat-form-field>
+                 <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Contact Number" type="tel" formControlName="contactNumber" required/>
+                    <mat-error *ngIf="hasError('contactNumber', 'required')">Contact Number is required.</mat-error>
+                    <mat-error *ngIf="hasError('contactNumber', 'pattern')">Please enter a valid Contact Number.</mat-error>
+                </mat-form-field>
+
+              <button  mat-raised-button class="primary-button" type="submit" [disabled]="loginForm.invalid">Send OTP
+              </button>
+          </form>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
+

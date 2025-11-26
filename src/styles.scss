@@ -1,1 +1,226 @@
-/* You can add global styles to this file, and also import other style files */
+
+// Include theming for Angular Material with `mat.theme()`.
+// This Sass mixin will define CSS variables that are used for styling Angular Material
+// components according to the Material 3 design spec.
+// Learn more about theming and how to use it for your application's
+// custom components at https://material.angular.dev/guide/theming
+@use '@angular/material' as mat;
+
+html {
+  @include mat.theme((
+    color: (
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
+}
+
+body {
+  // Default the application to a light color theme. This can be changed to
+  // `dark` to enable the dark color theme, or to `light dark` to defer to the
+  // user's system settings.
+  color-scheme: light;
+
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+
+  // Reset the user agent margin.
+  margin: 0;
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1,h2,h3, p{
+    margin: 0;
+}
+
+.cursor-pointer{
+    cursor: pointer;
+}
+
+.bg-container, .conntected-body {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+}
+
+.bg-container{
+    background-image: url('./assets/images/kapila-bg.png');
+
+}
+.conntected-body{
+    background-image: url('./assets/images/kapila-second-bg.png');
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+}
+
+.back-arrow{
+    color: #3a8243;
+    font-size: 2rem;
+}
+
+.mb-3{
+    margin-bottom: 1rem;
+}
+
+.mb-4{
+    margin-bottom: 2rem;
+}
+
+.flex-btwn-center {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.main-bg {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.header-logo img {
+    height: 5rem;
+}
+
+.wifi-circle img {
+    height: 130px;
+    margin-bottom: 20px;
+}
+
+.wifi-title {
+    font-size: 2rem;
+    color: #3a8243;
+}
+
+.wifi-subtitle {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+input {
+    border: 1px solid green !important;
+}
+.user-input{
+    padding: 1rem;
+    border-radius: 5px;
+    width: 20rem;
+
+}
+.otp-input{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.wifi-desc {
+    font-size: 0.95rem;
+    color: #687b73;
+}
+
+.primary-button {
+    background-color: #43ab6c !important;
+    color: white !important;
+    border-radius: 25px;
+    padding: 13px 32px;
+    font-size: 1rem;
+    width: 20rem;
+    border: none;
+    cursor: pointer !important;
+    transition: background 0.2s;
+}
+
+.primary-button:hover {
+    background: #367e58;
+}
+
+.footer-bg {
+    backdrop-filter: blur(24.299999237060547px);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 1rem 1.5rem;
+    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.footer-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.footer-item i {
+    color: #28704b;
+}
+
+.footer-item span{
+    color: #28704b;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.footer-item {
+    mat-icon {
+        color: #28704b;
+        display: flex;
+        align-items: center;
+        gap: 0;
+        font-size: 1rem;
+    }
+}
+.mt-3 {
+    margin-top: 3rem;
+}
+
+.carousel-item{
+    img{
+        height: 15rem;
+    }
+}
+@media screen and (max-width: 480px) {
+    body{
+        background-image:url('./assets/images/kapila-mobile-bg.png')
+    }
+    .conntected-body{
+        background-image: url('./assets/images/kapila-second-mb-bg.png');
+    }
+
+    .header-logo img {
+        height: 4rem;
+    }
+
+    .wifi-circle img {
+        height: auto;
+        margin-bottom: 4rem;
+    }
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
