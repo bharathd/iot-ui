@@ -1,0 +1,80 @@
+<div class="p-3">
+    <div class="flex-btwn-center mb-3">
+        <div>
+            <h1 class="heading">IOT Control Center</h1>
+            <p>Monitor and manage your connected devices with ease</p>
+        </div>
+        <div class="flex-center">
+            <button type="button" class="refresh-button" mat-raised-button><mat-icon>autorenew</mat-icon>Refresh</button>
+            <button type="button" class="primary-button" mat-raised-button ><mat-icon>add</mat-icon>Add Poster</button>
+        </div>
+    </div>
+    <div class="d-grid-cards mb-3">
+        <mat-card class="card" *ngFor="let item of cardsData; let i = index">
+            <mat-card-content >
+                <div class="flex-btwn-center mb-2">
+                    <h5 class="sub-title">{{ item.title }}</h5>
+                    <mat-icon class="text-green">{{item.icon}}</mat-icon>
+                </div>
+                <h3 class="title mb-2">{{ item.value}}</h3>
+                <p>{{item.desc}}</p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <h3 class="title mb-2">Connected Devices</h3>
+    <div class="div-scroll mobile-hide tablecard">
+    <table mat-table [dataSource]="dataSource" class="mat-table">
+      <ng-container matColumnDef="device">
+        <th mat-header-cell *matHeaderCellDef>Device</th>
+        <td mat-cell *matCellDef="let device">
+          <div>
+            <span class="device"><mat-icon>mobile</mat-icon></span>
+            <span>{{ device.device }}</span>
+          </div>
+        </td></ng-container
+      >
+      <ng-container matColumnDef="deviceId">
+        <th mat-header-cell *matHeaderCellDef>Device Id</th>
+        <td mat-cell *matCellDef="let device" >
+          <span>{{ device.deviceId }}
+          </span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Type</th>
+        <td mat-cell *matCellDef="let device">
+          {{ device.type }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let device">
+          <span class="status" [ngClass]="device.online === 'offline' ? 'offline' : 'online'">{{ device.status }}</span>
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="connected">
+        <th mat-header-cell *matHeaderCellDef>Connected</th>
+        <td mat-cell *matCellDef="let device">
+          {{ device.connected }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="usage">
+        <th mat-header-cell *matHeaderCellDef>Usage</th>
+        <td mat-cell *matCellDef="let device">
+          {{ device.usage }}
+        </td>
+      </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>Actions</th>
+        <td mat-cell *matCellDef="let device">
+          <button mat-icon-button (click)="viewDevice()">
+            <mat-icon class="text-green">ios_share</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="clickable-cell" (click)="viewDevice()"></tr>
+    </table>
+  </div>
+</div>
