@@ -51,11 +51,10 @@ h1,h2,h3, p{
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    padding: 1.5rem;
 }
 
 .bg-container{
-    background-image: url('./assets/images/kapila-bg.png');
+    background-image: url('./assets/images/kapila-bgg.png');
 
 }
 .conntected-body{
@@ -73,8 +72,8 @@ h1,h2,h3, p{
 .flex-center{
     display: flex;
     justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
+    align-items: flex-start;
+    gap: 0.8rem;
     flex-wrap: nowrap;
 }
 
@@ -103,10 +102,10 @@ h1,h2,h3, p{
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 2rem;
     align-items: center;
     text-align: center;
-    margin-bottom: 3rem;
+    padding: 1.5rem;
 }
 
 .header-logo img {
@@ -114,8 +113,7 @@ h1,h2,h3, p{
 }
 
 .wifi-circle img {
-    height: 130px;
-    margin-bottom: 20px;
+    height: 180px;
 }
 
 .wifi-title {
@@ -146,19 +144,21 @@ input {
 
 .wifi-desc {
     font-size: 0.95rem;
-    color: #687b73;
+    color: #464646;
 }
 
 .primary-button {
-    background-color: #43ab6c !important;
+    background: rgba(59, 157, 72, 1) !important;
     color: white !important;
     border-radius: 25px;
     padding: 13px 32px;
     font-size: 1rem;
     width: 20rem;
-    border: none;
+    border: none !important;
     cursor: pointer !important;
     transition: background 0.2s;
+    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.1) !important;
+    box-shadow: 0px 4px 4px 0px rgba(255, 255, 255, 0.25) inset !important;
 }
 
 .primary-button:hover {
@@ -166,26 +166,27 @@ input {
 }
 
 .footer-bg {
-    backdrop-filter: blur(24.299999237060547px);
-    background: rgba(255, 255, 255, 0.9);
+   background: rgba(255, 255, 255, 0.9) !important;
+   backdrop-filter: blur(24.299999237060547px) !important;
     padding: 1rem 1.5rem;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .footer-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 .footer-item i {
     color: #28704b;
 }
 
-.footer-item span{
+.footer-item p,a {
     color: #28704b;
     text-decoration: none;
-    font-size: 0.95rem;
+    font-size: 1.2rem;
+    line-height: 120%;
+    text-align: center;
 }
 .footer-item {
     mat-icon {
@@ -193,7 +194,6 @@ input {
         display: flex;
         align-items: center;
         gap: 0;
-        font-size: 1rem;
     }
 }
 .mt-3 {
@@ -218,8 +218,20 @@ input {
     }
 
     .wifi-circle img {
-        height: auto;
-        margin-bottom: 4rem;
+        margin-bottom: 0;
+    }
+    .footer-item {
+    align-items: center;
+    flex-direction: column;
+    }
+    .wifi-title {
+        font-size: 1.5rem;
+    }
+    .flex-btwn-center {
+    justify-content: space-around;
+    }
+    .footer-item p, a {
+    font-size: 1rem;
     }
 }
 html, body { height: 100%; }
