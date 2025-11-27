@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
 import { UserService } from '../services/user-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AppConstant } from '../../../app.contstant';
 
 @Component({
   selector: 'app-login-page',
@@ -17,6 +18,7 @@ export class LoginPage  implements OnInit{
   loginForm!: FormGroup;
   generatedOtp: string = '';
   isLoading = false;
+  organizationDetails = AppConstant.ORGA;
 
   constructor(
     private fb: FormBuilder,
@@ -44,18 +46,15 @@ export class LoginPage  implements OnInit{
     if (this.loginForm.invalid) return;
     this.isLoading = true;
     this.generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
-    localStorage.setItem('otp', this.generatedOtp);
-    localStorage.setItem('contactNumber', this.loginForm.value.contactNumber);
-    const body = {...this.loginForm.value, otp: this.generatedOtp }
-    console.log(body);
+    const body = {...this.loginForm.value}
     
-    this.userService.sendOtp(body).subscribe({
+    this.userService.generateOtp(body).subscribe({
        next: () => {
         this.isLoading = false;
         this.snackBar.open('Otp generated successfully', 'Close', {
           duration: 3000,
         });
-        this.router.navigate(['/admin/staff']);
+        this.router.navigate(['/verify-otp'], {state: {userDetails: body}});
       },
       error: err => {
         this.isLoading = false;

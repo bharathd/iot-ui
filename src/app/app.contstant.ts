@@ -1,7 +1,12 @@
 export const AppConstant = {
     ORGA: {
-        name: 'Kapila Hotel',
-        address: 'Yellammagutta, Nizamabad, +91 93918 85146',
-        websiteUrl: 'www.hotelkapila.in',
+        backgroundImage:'assets/images/kapila-bgg.png',
+        logo:'assets/images/kapila-logo.svg',
+        organizationName: 'Kapila Hotel',
+        address: 'Yellammagutta, Nizamabad',
+        contactNumber: '+91 93918 85146',
+        primaryColor: '#3b9d48',
+        secondaryColor: '#ffffff',
+        websiteUrl: 'https://hotelkapila.in',
     }
 }

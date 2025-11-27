@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
 import { UserService } from '../services/user-service';
 import { UserDetails } from '../models/user';
+import { AppConstant } from '../../../app.contstant';
 
 @Component({
   selector: 'app-otp-page',
@@ -23,6 +24,7 @@ export class OtpPage {
   userDetails!: UserDetails;
   interval: any;
   otpExpired = false;
+  organizationDetails = AppConstant.ORGA;
   constructor(
     private fb: FormBuilder,
     private router: Router,
@@ -113,7 +115,7 @@ export class OtpPage {
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
     this.storedOtp = newOtp;
     const body = {...this.userDetails, otp: newOtp}
-    this.userService.sendOtp(body).subscribe({
+    this.userService.generateOtp(body).subscribe({
        next: () => {
         this.snackBar.open('Otp generated successfully', 'Close', {
           duration: 3000,
