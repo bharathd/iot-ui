@@ -1,12 +1,14 @@
+@use '../../../../partial-scss/variables' as *;
+
 .refresh-button{
-    background-color: #000 !important;
-    color: #fff !important;
+    background-color: $blackColor !important;
+    color: $whiteColor !important;
 }
 
 .tablecard {
     box-shadow: #63636333 0 2px 8px !important;
     border-radius: 10px !important;
-    background-color:#fff;
+    background-color:$whiteColor;
 }
 
 .mat-table {
@@ -16,14 +18,14 @@
   mat-header-cell {
     justify-content: left;
     padding: 0 1rem;
-    background-color: rgb(246, 250, 254) !important;
+    background-color: $whiteColor !important;
   }
 
   .device{
     background-color: rgba(59, 157, 72, 0.1);
     border-radius: 50%;
     padding: 0.5rem;
-    color: rgba(59, 157, 72, 1);
+    color: $whiteColor;
     margin-right: 1rem;
   }
 
@@ -39,14 +41,15 @@
 
   .online {
     background-color:#d9f2e1;
-    color: #3b9d48;
-    border: 1px solid #3b9d48;
+    color: $greenColor;
+    border: 1px solid $greenColor;
 
   }
 
   .offline {
     background-color: #F5E6E6;
-    color: #d74242;
+    color: $dangerColor;
+    border: 1px solid $dangerColor;
   }
 
   .mat-mdc-input-element {

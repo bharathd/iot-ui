@@ -5,6 +5,7 @@
 // Learn more about theming and how to use it for your application's
 // custom components at https://material.angular.dev/guide/theming
 @use '@angular/material' as mat;
+@use './partial-scss/variables' as *;
 
 html {
   @include mat.theme((
@@ -36,11 +37,9 @@ body {
     box-sizing: border-box;
 }
 
-h1,h2,h3,h4,h5,h6 p{
+h1,h2,h3,h4,h5,h6, p{
     margin: 0
 }
-
-
 
 .cursor-pointer{
     cursor: pointer;
@@ -61,11 +60,11 @@ h1,h2,h3,h4,h5,h6 p{
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px !important;
   padding: 0 0.5rem;
   border-radius: 10px !important;
-  background-color: #fff !important;
+  background-color: $whiteColor !important;
 }
 
 .text-green {
-    color: #28704b;
+    color: $greenColor;
 }
 
 .heading{
@@ -82,7 +81,6 @@ h1,h2,h3,h4,h5,h6 p{
     font-size: 1.5rem;
     font-weight: 500;
 }
-
 
 .bg-container, .conntected-body {
     background-position: center;
@@ -112,13 +110,13 @@ h1,h2,h3,h4,h5,h6 p{
 .flex-center{
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.8rem;
     flex-wrap: nowrap;
 }
 
 .back-arrow{
-    color: #3a8243;
+    color: $greenColor;
     font-size: 2rem;
 }
 
@@ -173,7 +171,7 @@ h1,h2,h3,h4,h5,h6 p{
 
 .wifi-title {
     font-size: 2rem;
-    color: #3a8243;
+    color: $greenColor;
 }
 
 .wifi-subtitle {
@@ -182,7 +180,7 @@ h1,h2,h3,h4,h5,h6 p{
 }
 
 input {
-    border: 1px solid green !important;
+    border: 1px solid $greenColor !important;
 }
 .user-input{
     padding: 1rem;
@@ -203,12 +201,11 @@ input {
 }
 
 .primary-button {
-    background: rgba(59, 157, 72, 1) !important;
-    color: white !important;
+    background: $greenColor !important;
+    color: $whiteColor !important;
     border-radius: 25px;
     padding: 13px 32px;
     font-size: 1rem;
-    width: 20rem;
     border: none !important;
     border: none;
     cursor: pointer !important;
@@ -236,12 +233,8 @@ input {
     gap: 0.3rem;
 }
 
-.footer-item i {
-    color: #28704b;
-}
-
-.footer-item p,a {
-    color: #28704b;
+.footer-item span,a {
+    color: $greenColor;
     text-decoration: none;
     font-size: 1.2rem;
     line-height: 120%;
@@ -249,7 +242,7 @@ input {
 }
 .footer-item {
     mat-icon {
-        color: #28704b;
+        color: $greenColor;
         display: flex;
         align-items: center;
         gap: 0;

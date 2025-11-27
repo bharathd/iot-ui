@@ -5,6 +5,8 @@ import { Router, RouterLink } from '@angular/router';
 import { MaterialComponentsModule } from '../../../app-angular-material.module';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
+import { UserService } from '../services/user-service';
+import { UserDetails } from '../models/user';
 
 @Component({
   selector: 'app-otp-page',
@@ -15,23 +17,29 @@ import { Footer } from '../footer/footer';
 })
 export class OtpPage {
   otpForm!: FormGroup;
-  finalOtp: string = "";
-  storedOtp: string | null = '';
-  storedNumber: string | null = '';
+  finalOtp = '';
+  storedOtp = '';
   timeLeft = 90;
+  userDetails!: UserDetails;
   interval: any;
   otpExpired = false;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
+    private userService: UserService,
     private cdr: ChangeDetectorRef
-  ) {}
+  ) {
+    const state = this.router.getCurrentNavigation()?.extras.state;
+    if (state && state['userDetails']) {
+      this.userDetails = state['userDetails'];
+      console.log(this.userDetails);
+      this.storedOtp = state['userDetails'].otp;
+    }
+  }
 
   @ViewChildren('otpInput') otpInputs!: QueryList<ElementRef>;
   ngOnInit(): void {
-    this.storedOtp = localStorage.getItem('otp');
-    this.storedNumber = localStorage.getItem('contactNumber')
     this.createOtpForm();
     this.startTimer();
   }
@@ -103,9 +111,22 @@ export class OtpPage {
 
   resendOtp() {
     const newOtp = Math.floor(100000 + Math.random() * 900000).toString();
-    localStorage.setItem("otp", newOtp);
     this.storedOtp = newOtp;
-    console.log(newOtp);
+    const body = {...this.userDetails, otp: newOtp}
+    this.userService.sendOtp(body).subscribe({
+       next: () => {
+        this.snackBar.open('Otp generated successfully', 'Close', {
+          duration: 3000,
+        });
+        this.router.navigate(['/admin/staff']);
+      },
+      error: err => {
+        this.snackBar.open(err.error.errors.message || 'Failed to generate otp', 'Close', {
+          duration: 3000,
+        });
+      },
+    })
+    
     this.startTimer();
   }
 

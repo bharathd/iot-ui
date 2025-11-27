@@ -21,7 +21,7 @@
                     <mat-error *ngIf="hasError('contactNumber', 'pattern')">Please enter a valid Contact Number.</mat-error>
                 </mat-form-field>
 
-              <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid">Send OTP
+              <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid || isLoading">Send OTP
               </button>
           </form>
         </div>

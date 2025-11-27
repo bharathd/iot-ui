@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AdminLogin } from './components/admin-login/admin-login';
 import { AdminDashboard } from './components/admin-dashboard/admin-dashboard';
 import { DeviceIndetail } from './components/device-indetail/device-indetail';
+import { AdminAddPosters } from './components/admin-add-posters/admin-add-posters';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'device-details',
     component: DeviceIndetail
+  },
+  {
+    path: 'add-posters',
+    component: AdminAddPosters
   }
 ];
 

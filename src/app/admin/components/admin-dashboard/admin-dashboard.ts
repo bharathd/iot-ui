@@ -2,14 +2,17 @@ import { Component } from '@angular/core';
 import { MaterialComponentsModule } from '../../../app-angular-material.module';
 import { CommonModule } from '@angular/common';
 import { AdminHeader } from "../admin-header/admin-header";
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [MaterialComponentsModule, CommonModule, AdminHeader],
+  imports: [MaterialComponentsModule, CommonModule, AdminHeader, RouterLink],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.scss',
 })
 export class AdminDashboard {
+
+  constructor(private router: Router) {}
 
   displayedColumns: string[] = [
     'device',
@@ -39,13 +42,13 @@ export class AdminDashboard {
       title: 'online Devices',
       value: '12',
       desc: 'All systems operational',
-      icon: 'azm'
+      icon: 'star_shine'
     },
     {
       title: 'Network Speed',
       value: '150 Mbps',
       desc: 'Optimal • 99.9% uptime',
-      icon: 'android_wifi_3_bar'
+      icon: 'wifi_on'
     }
   ]
 
@@ -101,6 +104,6 @@ export class AdminDashboard {
   ];
 
   viewDevice() {
-    // pass
+    this.router.navigate(['/admin/device-details'])
   }
 }

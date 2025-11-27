@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { MaterialComponentsModule } from '../../../app-angular-material.module';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
+import { UserService } from '../services/user-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login-page',
@@ -14,8 +16,14 @@ import { Footer } from '../footer/footer';
 export class LoginPage  implements OnInit{
   loginForm!: FormGroup;
   generatedOtp: string = '';
+  isLoading = false;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(
+    private fb: FormBuilder,
+    private router: Router,
+    private userService: UserService,
+    private snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
     this.createLoginForm();
@@ -32,17 +40,30 @@ export class LoginPage  implements OnInit{
     return this.loginForm.get(controlName)?.hasError(errorName);
   }
 
-
-  generateOtp(): string {
-    return Math.floor(100000 + Math.random() * 900000).toString();
-  }
-
   submitForm() {
     if (this.loginForm.invalid) return;
-    this.generatedOtp = this.generateOtp();
-    console.log('OTP Sent:', this.generatedOtp);
+    this.isLoading = true;
+    this.generatedOtp = Math.floor(100000 + Math.random() * 900000).toString();
     localStorage.setItem('otp', this.generatedOtp);
     localStorage.setItem('contactNumber', this.loginForm.value.contactNumber);
-    this.router.navigate(['/verify-otp']);
+    const body = {...this.loginForm.value, otp: this.generatedOtp }
+    console.log(body);
+    
+    this.userService.sendOtp(body).subscribe({
+       next: () => {
+        this.isLoading = false;
+        this.snackBar.open('Otp generated successfully', 'Close', {
+          duration: 3000,
+        });
+        this.router.navigate(['/admin/staff']);
+      },
+      error: err => {
+        this.isLoading = false;
+        this.snackBar.open(err.error.errors.message || 'Failed to generate otp', 'Close', {
+          duration: 3000,
+        });
+      },
+    })
+    this.router.navigate(['/verify-otp'], {state: {userDetails: body}});
   }
 }

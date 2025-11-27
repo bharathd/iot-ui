@@ -7,7 +7,7 @@
         </div>
         <div class="flex-center">
             <button type="button" class="refresh-button" mat-raised-button><mat-icon>autorenew</mat-icon>Refresh</button>
-            <button type="button" class="primary-button" mat-raised-button ><mat-icon>add</mat-icon>Add Poster</button>
+            <button type="button" class="primary-button" mat-raised-button routerLink="/admin/add-posters"><mat-icon>add</mat-icon>Add Poster</button>
         </div>
     </div>
     <div class="d-grid-cards mb-3">
@@ -73,9 +73,8 @@
           </button>
         </td>
       </ng-container>
-
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="clickable-cell" (click)="viewDevice()"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns" class="cursor-pointer" (click)="viewDevice()"></tr>
     </table>
   </div>
 </div>

@@ -11,7 +11,7 @@
                 <mat-icon class="back-arrow" routerLink="../login">keyboard_backspace</mat-icon>
                 <h1 class="wifi-title">Verify Your Identity</h1>
             </div>
-            <p class="wifi-desc">Enter the 6-digit code sent to +91{{storedNumber}}</p>
+            <p class="wifi-desc">Enter the 6-digit code sent to +91{{userDetails.contactNumber}}</p>
 
             <form [formGroup]="otpForm" class="otp-wrapper" (ngSubmit)="verifyOtp()" class="flex-column">
                 <div class="flex-center">
