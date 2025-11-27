@@ -1,0 +1,22 @@
+@use '../../../../partial-scss/variables' as *;
+
+header {
+    background-color: $greenColor;
+    height: 5rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; // keep above all elements
+
+    .logo {
+        height: 3rem;
+    }
+    .white-border {
+        padding: 0.5rem;
+        border: 1px solid $whiteColor;
+        font-size: 1rem;
+        color: $whiteColor;
+        height: 2rem;
+    }
+}

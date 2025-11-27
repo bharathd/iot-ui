@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { MaterialComponentsModule } from '../../../app-angular-material.module';
 import { CommonModule } from '@angular/common';
+import { AdminHeader } from "../admin-header/admin-header";
 
 @Component({
   selector: 'app-admin-dashboard',
-  imports: [MaterialComponentsModule, CommonModule],
+  imports: [MaterialComponentsModule, CommonModule, AdminHeader],
   templateUrl: './admin-dashboard.html',
   styleUrl: './admin-dashboard.scss',
 })
