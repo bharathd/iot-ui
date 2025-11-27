@@ -1,0 +1,79 @@
+@use '../../../../partial-scss/variables' as *;
+
+.refresh-button{
+    background-color: $blackColor !important;
+    color: $whiteColor !important;
+}
+
+.tablecard {
+    box-shadow: #63636333 0 2px 8px !important;
+    border-radius: 10px !important;
+    background-color:$whiteColor;
+}
+
+.mat-table {
+  width: 100%;
+  .mat-table-head,
+  th,
+  mat-header-cell {
+    justify-content: left;
+    padding: 0 1rem;
+    background-color: $whiteColor !important;
+  }
+
+  .device{
+    background-color: rgba(59, 157, 72, 0.1);
+    border-radius: 50%;
+    padding: 0.5rem;
+    color: $whiteColor;
+    margin-right: 1rem;
+  }
+
+  .status {
+    padding: 0.5rem;
+    border-radius: 9999px;
+    width: 58;
+    height: 22;
+    top: 27px;
+    left: 603px;
+    border-radius: 9999px;
+  }
+
+  .online {
+    background-color:#d9f2e1;
+    color: $greenColor;
+    border: 1px solid $greenColor;
+
+  }
+
+  .offline {
+    background-color: #F5E6E6;
+    color: $dangerColor;
+    border: 1px solid $dangerColor;
+  }
+
+  .mat-mdc-input-element {
+    text-align: center;
+  }
+
+  .mat-table-cell:last-child,
+  td:last-child {
+    p {
+      margin-bottom: 0px;
+    }
+  }
+
+  .mat-table-cell,
+  .mat-mdc-cell,
+  td {
+    text-align: left;
+    padding: 0.3rem 1rem;
+    justify-content: left;
+  }
+
+  td,
+  th {
+    text-align: left;
+    white-space: nowrap;
+  }
+}

@@ -1,0 +1,31 @@
+<app-admin-header></app-admin-header>
+<div class="p-3 pt-6">
+    <div class="flex-btwn-center mb-3">
+        <div class="flex-center">
+            <mat-icon class="heading mb-2 cursor-pointer" routerLink="/admin/dashboard">keyboard_backspace</mat-icon>
+            <h1 class="heading">Add Posters</h1>
+        </div>
+    </div>
+    <form class="add-posters-page" [formGroup]="postersForm">
+        <label class="upload-box  mb-3">
+            <div class="upload-content">
+                <span class="upload-icon">&#8682;</span>
+                <p>Upload Poster</p>
+                <small>(1440 x 1800px)</small>
+            </div>
+            <input type="file" hidden (change)="onFileSelected($event)" class="w-100" multiple>
+        </label>
+        <h3 class="title mb-3">Uploaded Posters</h3>
+        <div class="d-grid-cards mb-3">
+            <div class="poster-card" *ngFor="let poster of postersForm.get('posters')?.value; let i=index">
+                <img [src]="poster" alt="" />
+                <div class="menu">
+                    <button class="dots-btn" (click)="toggleMenu(i)">⋮</button>
+                    <div class="menu-box" *ngIf="activeMenu === i">
+                        <button (click)="deletePoster(i)">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
