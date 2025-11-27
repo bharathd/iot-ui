@@ -121,7 +121,7 @@ h1,h2,h3,h4,h5,h6, p{
 }
 
 .p-3{
-    padding: 1rem;
+    padding: 1rem 1.5rem !important;
 }
 
 .pt-5{
@@ -256,6 +256,14 @@ input {
     img{
         height: 15rem;
     }
+}
+tr:nth-child(even) {
+  background-color: #eef5ee;
+}
+.div-scroll {
+    overflow-x: auto;
+    scrollbar-width: none;
+    scrollbar-width: thin;
 }
 @media screen and (max-width: 480px) {
     body{
