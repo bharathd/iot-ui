@@ -8,6 +8,7 @@ import { Footer } from '../footer/footer';
 import { UserService } from '../services/user-service';
 import { UserDetails } from '../models/user';
 import { AppConstant } from '../../../app.contstant';
+import { CommonService } from '../../../service/common-service';
 
 @Component({
   selector: 'app-otp-page',
@@ -25,12 +26,14 @@ export class OtpPage {
   interval: any;
   otpExpired = false;
   organizationDetails = AppConstant.ORGA;
+  organization: any;
   constructor(
     private fb: FormBuilder,
     private router: Router,
     private snackBar: MatSnackBar,
     private userService: UserService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private commonService: CommonService
   ) {
     const state = this.router.getCurrentNavigation()?.extras.state;
     if (state && state['userDetails']) {
@@ -134,6 +137,14 @@ export class OtpPage {
 
   ngOnDestroy(): void {
     clearInterval(this.interval);
+  }
+
+  getOrganizationDetails() {
+    this.commonService.getOrganizationDeatails().subscribe({
+      next: response => {
+        this.organization = response;
+      },
+    })
   }
 
 }

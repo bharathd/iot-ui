@@ -7,8 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class CommonService {
   constructor(private apiService: ApiService) {}
-   getOrganizationDeatails() {
+
+  getOrganizationDeatails<R>(): Observable<R> {
     const url = `orgnaization-details`;
-    return this.apiService.httpGet(url);
+    return this.apiService.httpGet<R>(url);
   }
 }
