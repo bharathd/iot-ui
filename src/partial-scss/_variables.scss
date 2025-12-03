@@ -1,6 +1,10 @@
 :root {
   --primary-color: #3b9d48;
   --secondary-color: #fff;
+  --primary-bg: none;
+  --second-bg: none;
+  --mobile-bg: none;
+  --mobile-second-bg: none;
 }
 
 $greenColor: var(--primary-color);

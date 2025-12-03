@@ -9,11 +9,12 @@ export class ApiService {
   apiEndpoint = '';
 
   constructor(private http: HttpClient) {
-    // this.apiEndpoint = this.getApiEndpoint();
+    this.apiEndpoint = this.getApiEndpoint();
   }
 
-  // getApiEndpoint(): string {
-  // }
+  getApiEndpoint(): string {
+    return '';
+  }
 
   httpGet<R>(url: string, headers?: HttpHeaders, params?: HttpParams, responseType?: string): Observable<R> {
     const apiUrl = `${this.apiEndpoint}${url}`;

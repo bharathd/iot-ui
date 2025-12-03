@@ -120,7 +120,7 @@ export class OtpPage {
     const body = {...this.userDetails, otp: newOtp}
     this.userService.generateOtp(body).subscribe({
        next: () => {
-        this.snackBar.open('Otp generated successfully', 'Close', {
+        this.snackBar.open(`Otp generated successfully ${this.userDetails.contactNumber}`, 'Close', {
           duration: 3000,
         });
         this.router.navigate(['/admin/staff']);

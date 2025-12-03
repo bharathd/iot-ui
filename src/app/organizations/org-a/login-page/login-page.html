@@ -15,10 +15,14 @@
                     <mat-error *ngIf="hasError('userName', 'required')"> User Name is required </mat-error>
                     <mat-error *ngIf="hasError('userName', 'minlength')">Required minimum three chracters </mat-error>
                 </mat-form-field>
-                 <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline">
                     <input matInput placeholder="Enter Contact Number" type="tel" formControlName="contactNumber" required/>
                     <mat-error *ngIf="hasError('contactNumber', 'required')">Contact Number is required.</mat-error>
                     <mat-error *ngIf="hasError('contactNumber', 'pattern')">Please enter a valid Contact Number.</mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <input matInput placeholder="Enter Email" type="email" formControlName="email"/>
+                    <mat-error *ngIf="hasError('email', 'pattern')">Please enter a valid Email Id.</mat-error>
                 </mat-form-field>
               <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid || isLoading">Send OTP
               </button>

@@ -24,7 +24,7 @@ export class LoginPage  implements OnInit{
     private fb: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit() {
@@ -34,7 +34,8 @@ export class LoginPage  implements OnInit{
   createLoginForm() {
     this.loginForm = this.fb.group({
       userName: ['', [Validators.required, Validators.minLength(3)]],
-      contactNumber: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]]
+      contactNumber: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
+      email: ['', Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')],
     });
   }
 

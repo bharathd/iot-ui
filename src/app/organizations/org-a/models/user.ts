@@ -5,6 +5,9 @@ export interface UserDetails {
 }
 export interface OrganizationDetails {
   backgroundImage: string;
+  secondBgImage: string;
+  mobileBg: string;
+  mobileSecondBg: string;
   logo: string;
   organizationName: string;
   address: string;

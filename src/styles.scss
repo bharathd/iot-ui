@@ -17,6 +17,7 @@ html {
     density: 0,
   ));
 }
+html, body { height: 100%; }
 
 body {
   // Default the application to a light color theme. This can be changed to
@@ -30,6 +31,7 @@ body {
 
   // Reset the user agent margin.
   margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 * {
     margin: 0;
@@ -92,11 +94,11 @@ h1,h2,h3,h4,h5,h6, p{
 }
 
 .bg-container{
-    background-image: url('./assets/images/kapila-bgg.png');
+    background-image: var(--primary-bg);
 
 }
 .conntected-body{
-    background-image: url('./assets/images/kapila-second-bg.png');
+    background-image: var(--second-bg);
 }
 
 .flex-column {
@@ -268,10 +270,10 @@ tr:nth-child(even) {
 }
 @media screen and (max-width: 480px) {
     body{
-        background-image:url('./assets/images/kapila-mobile-bg.png')
+        background-image: var(--mobile-bg)
     }
     .conntected-body{
-        background-image: url('./assets/images/kapila-second-mb-bg.png');
+        background-image: var(--mobile-second-bg);
     }
 
     .header-logo img {
@@ -291,5 +293,3 @@ tr:nth-child(even) {
     font-size: 1rem;
     }
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
