@@ -1,0 +1,11 @@
+@use '../../../../partial-scss/variables' as *;
+@use '../admin-dashboard/admin-dashboard.scss' as *;
+
+.equal-table {
+  width: 100%;
+  th, td {
+    width: 33.33%;
+  }
+}
+
+
