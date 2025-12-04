@@ -1,0 +1,33 @@
+<div class="bg-container">
+    <div class="main-bg">
+        <div class="header-logo">
+            <img src="../assets/images/kapila-logo.svg" alt="Kapila Hotel" />
+        </div>
+        <div class="wifi-circle">
+            <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
+        </div>
+        <div class="flex-column mt-3">
+            <h1 class="wifi-title">Unlock free WiFi around</h1>
+            <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
+                <mat-form-field appearance="outline">
+                    <mat-label>UserId</mat-label>
+                    <input matInput placeholder="Enter UserId" formControlName="userId" required type="text" class="user-input"/>
+                    <mat-error *ngIf="hasError('userId', 'required')"> User Id is required </mat-error>
+                    <mat-error *ngIf="hasError('userId', 'minlength')">Required minimum three chracters </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Password</mat-label>
+                    <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" required />
+                     <mat-icon (click)="hide = !hide" matSuffix> {{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    <mat-error *ngIf="hasError('password', 'required')">Password is required.</mat-error>
+                    <mat-error *ngIf="hasError('password', 'minlength')">Required Minimum 8 characters.</mat-error>
+                    </mat-form-field>
+
+              <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid">Login
+              </button>
+          </form>
+        </div>
+    </div>
+    <app-footer></app-footer>
+</div>
+
