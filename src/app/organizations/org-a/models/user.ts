@@ -1,18 +1,30 @@
 export interface UserDetails {
     userName: string;
     contactNumber: number;
-    otp?:number
+    customerId: string;
 }
+
+export interface OrganizationConfig {
+  organizationId: string;
+  logo: string | null;
+  backgroundImage: string | null;
+  primaryColor: string | null;
+  secondaryColor: string | null;
+  welcomeTitle: string | null;
+  welcomeCaptions: string | null;
+  websiteUrl: string | null;
+}
+
 export interface OrganizationDetails {
-  backgroundImage: string;
-  secondBgImage: string;
-  mobileBg: string;
-  mobileSecondBg: string;
-  logo: string;
+  organizationId: string;
+  organizationType: string;
   organizationName: string;
-  address: string;
+  contactPerson: string;
   contactNumber: string;
-  primaryColor: string;
-  secondaryColor: string;
-  websiteUrl: string;
+  email: string;
+  address: string;
+  description: string;
+  isActive: boolean;
+  createdDate: number;
+  config: OrganizationConfig;
 }

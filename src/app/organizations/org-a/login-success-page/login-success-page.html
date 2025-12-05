@@ -1,7 +1,7 @@
 <div class="bg-container">
     <div class="main-bg">
         <div class="header-logo mb-4">
-            <img src="{{organizationDetails.logo}}" alt="{{organizationDetails.organizationName}}">
+            <img src="{{organizationDetails.config.logo}}" alt="{{organizationDetails.organizationName}}">
         </div>
     
         <div class="flex-column mt-3">
@@ -23,7 +23,8 @@
                 </button>
 
             </div>
-            <button class="primary-button w-20" type="button">Connect Wifi</button>
+           <a [href]="redirectUrl" target="_blank" class="primary-button w-20">Connected Wifi</a>
+
         </div>
     </div>
     <app-footer></app-footer>
