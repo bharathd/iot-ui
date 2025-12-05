@@ -63,7 +63,7 @@ export class LoginPage  implements OnInit{
   submitForm() {
     if (this.loginForm.invalid) return;
     this.isLoading = true;
-    const body = {...this.loginForm.value, organizationId: this.organizationDetails.organizationId, fasToken: this.fasToken};
+    const body = {...this.loginForm.value, organizationId: this.userService.getOrganizationIdValue(), fasToken: this.fasToken};
     
     this.userService.generateOtp(body).subscribe({
        next: (response) => {
