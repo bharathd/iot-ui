@@ -7,7 +7,6 @@ import { Footer } from '../footer/footer';
 import { UserService } from '../services/user-service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppConstant } from '../../../app.contstant';
-import { CommonService } from '../../../service/common-service';
 import { OrganizationDetails } from '../models/user';
 
 @Component({
@@ -64,7 +63,7 @@ export class LoginPage  implements OnInit{
   submitForm() {
     if (this.loginForm.invalid) return;
     this.isLoading = true;
-    const body = {...this.loginForm.value, organizationId: this.userService.getOrganizationIdValue(), fasToken: this.fasToken};
+    const body = {...this.loginForm.value, organizationId: this.organizationDetails.organizationId, fasToken: this.fasToken};
     
     this.userService.generateOtp(body).subscribe({
        next: (response) => {
@@ -73,7 +72,7 @@ export class LoginPage  implements OnInit{
         this.snackBar.open('Otp generated successfully', 'Close', {
           duration: 3000,
         });
-        this.router.navigate(['verify-otp'],{ relativeTo: this.route.parent , state: {userDetails: userData}});
+        this.router.navigate(['verify-otp'],{ relativeTo: this.route.parent , state: { userDetails: userData }});
       },
       error: err => {
         this.isLoading = false;

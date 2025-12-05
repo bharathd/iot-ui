@@ -1,4 +1,4 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
@@ -17,7 +17,7 @@ import { OtpAutoFocus } from "../../../directives/otp-auto-focus";
   templateUrl: './otp-page.html',
   styleUrl: './otp-page.scss',
 })
-export class OtpPage implements OnInit {
+export class OtpPage implements OnInit, OnDestroy {
   otpForm!: FormGroup;
   finalOtp = '';
   timeLeft = 90;
@@ -107,7 +107,6 @@ export class OtpPage implements OnInit {
         this.snackBar.open(`OTP generated successfully ${this.userDetails.contactNumber}`, 'Close', {
           duration: 3000,
         });
-        this.router.navigate(['/admin/staff']);
       },
       error: err => {
         this.snackBar.open(err.error.errors.message || 'Failed to generate otp', 'Close', {
