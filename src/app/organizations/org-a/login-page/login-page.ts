@@ -28,12 +28,14 @@ export class LoginPage  implements OnInit{
   isLoading = false;
   organizationDetails!: OrganizationDetails;
   primaryBgImage = AppConstant.ORGA.config.backgroundImage;
+  organizationId = ''
   fasToken = '';
 
   ngOnInit() {
     this.organizationDetails = this.userService.getOrganizationDetailsValue() || AppConstant.ORGA;
     this.primaryBgImage = this.organizationDetails.config.backgroundImage;
     document.documentElement.style.setProperty('--primary-bg', `url(${this.primaryBgImage})`);
+    this.organizationId = this.route.snapshot.paramMap.get('organizationId') || '';
     this.fasToken = this.route.snapshot.queryParamMap.get('fas') || '';    
     this.createLoginForm();
   }
@@ -63,7 +65,7 @@ export class LoginPage  implements OnInit{
   submitForm() {
     if (this.loginForm.invalid) return;
     this.isLoading = true;
-    const body = {...this.loginForm.value, organizationId: this.userService.getOrganizationIdValue(), fasToken: this.fasToken};
+    const body = {...this.loginForm.value, organizationId: this.organizationId, fasToken: this.fasToken};
     
     this.userService.generateOtp(body).subscribe({
        next: (response) => {
