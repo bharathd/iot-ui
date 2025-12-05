@@ -1,6 +1,6 @@
 export interface UserDetails {
-    userName: string;
-    contactNumber: number;
+    customerName: string;
+    mobileNumber: string;
     customerId: string;
 }
 

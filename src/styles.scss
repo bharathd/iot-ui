@@ -203,6 +203,15 @@ input {
     color: #464646;
 }
 
+button:disabled {
+    background: #94a194 !important;
+    cursor: not-allowed !important;
+    box-shadow: none !important;
+}
+button {
+ cursor: pointer;
+}
+
 .primary-button {
     background: $greenColor !important;
     color: $whiteColor !important;
