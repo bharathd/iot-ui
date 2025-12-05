@@ -269,13 +269,6 @@ tr:nth-child(even) {
     scrollbar-width: thin;
 }
 @media screen and (max-width: 480px) {
-    body{
-        background-image: var(--mobile-bg)
-    }
-    .conntected-body{
-        background-image: var(--mobile-second-bg);
-    }
-
     .header-logo img {
         height: 4rem;
     }

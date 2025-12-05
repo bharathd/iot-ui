@@ -2,11 +2,11 @@
     <div class="flex-btwn-center">
         <div class="footer-item">
                 <mat-icon>location_on</mat-icon>
-            <span>{{organizationDetails.address}}</span>
+            <span>{{organizationDetails.address}} {{organizationDetails.contactNumber}}</span>
         </div>
         <div class="footer-item">
             <mat-icon>language</mat-icon>
-            <a href="{{organizationDetails.websiteUrl}}" target="_blank">{{organizationDetails.websiteUrl}}</a>
+            <a href="{{organizationDetails.config.websiteUrl}}" target="_blank">{{organizationDetails.config.websiteUrl}}</a>
         </div>
     </div>
 </div>

@@ -13,7 +13,13 @@ export class ApiService {
   }
 
   getApiEndpoint(): string {
-    return '';
+    const port = window.location.port;
+    const endpoints: { [key: string]: string } = {
+      '4200': 'https://iot-api.azurewebsites.net/api/',
+      // '4000': 'http://159.65.155.140:8004/api/', // V1-Prod
+      // '4040': 'http://159.65.155.140:8040/api/', // V2-Prod
+    };
+    return endpoints[port] || 'https://iot-api.azurewebsites.net/api/';
   }
 
   httpGet<R>(url: string, headers?: HttpHeaders, params?: HttpParams, responseType?: string): Observable<R> {

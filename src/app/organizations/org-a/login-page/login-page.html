@@ -1,7 +1,7 @@
 <div class="bg-container">
     <div class="main-bg">
         <div class="header-logo">
-            <img src="{{organizationDetails.logo}}" alt="{{organizationDetails.organizationName}}">
+            <img src="{{organizationDetails.config.logo}}" alt="{{organizationDetails.organizationName}}">
         </div>
         <div class="wifi-circle">
             <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
@@ -11,19 +11,19 @@
             <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
                 <mat-form-field appearance="outline">
                     <mat-label>User Name</mat-label>
-                    <input matInput placeholder="Enter your name" formControlName="userName" required type="text" class="user-input"/>
-                    <mat-error *ngIf="hasError('userName', 'required')"> User Name is required </mat-error>
-                    <mat-error *ngIf="hasError('userName', 'minlength')">Required minimum three chracters </mat-error>
+                    <input matInput placeholder="Enter your name" formControlName="customerName" required type="text" class="user-input"/>
+                    <mat-error *ngIf="hasError('customerName', 'required')"> Customer Name is required </mat-error>
+                    <mat-error *ngIf="hasError('customerName', 'minlength')">Required minimum three chracters </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
-                    <input matInput placeholder="Enter Contact Number" type="tel" formControlName="contactNumber" required/>
-                    <mat-error *ngIf="hasError('contactNumber', 'required')">Contact Number is required.</mat-error>
-                    <mat-error *ngIf="hasError('contactNumber', 'pattern')">Please enter a valid Contact Number.</mat-error>
+                    <input matInput placeholder="Enter Contact Number" type="tel" formControlName="mobileNumber" required (keypress)="onlyDigits($event)"/>
+                    <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile Number is required.</mat-error>
+                    <mat-error *ngIf="hasError('mobileNumber', 'pattern')">Please enter a valid Mobile Number.</mat-error>
                 </mat-form-field>
-                <mat-form-field appearance="outline">
+                <!-- <mat-form-field appearance="outline">
                     <input matInput placeholder="Enter Email" type="email" formControlName="email"/>
                     <mat-error *ngIf="hasError('email', 'pattern')">Please enter a valid Email Id.</mat-error>
-                </mat-form-field>
+                </mat-form-field> -->
               <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid || isLoading">Send OTP
               </button>
           </form>
