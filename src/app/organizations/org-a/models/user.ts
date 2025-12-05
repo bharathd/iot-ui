@@ -1,7 +1,7 @@
 export interface UserDetails {
     userName: string;
     contactNumber: number;
-    otp?:number
+    customerId: string;
 }
 export interface OrganizationDetails {
   backgroundImage: string;
