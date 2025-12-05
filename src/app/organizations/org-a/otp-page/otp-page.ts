@@ -104,7 +104,7 @@ export class OtpPage implements OnInit, OnDestroy {
     const { customerId, ...body } = this.userDetails;
     this.userService.generateOtp(body).subscribe({
        next: () => {
-        this.snackBar.open(`OTP generated successfully ${this.userDetails.contactNumber}`, 'Close', {
+        this.snackBar.open(`OTP generated successfully ${this.userDetails.mobileNumber}`, 'Close', {
           duration: 3000,
         });
       },

@@ -21,9 +21,11 @@
                 <img [src]="poster" alt="" />
                 <div class="menu">
                     <button class="dots-btn" (click)="toggleMenu(i)">⋮</button>
-                    <div class="menu-box" *ngIf="activeMenu === i">
-                        <button (click)="deletePoster(i)">Delete</button>
-                    </div>
+                    @if(activeMenu === i) {
+                        <div class="menu-box">
+                            <button (click)="deletePoster(i)">Delete</button>
+                        </div>
+                    }
                 </div>
             </div>
         </div>

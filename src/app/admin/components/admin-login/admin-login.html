@@ -12,15 +12,23 @@
                 <mat-form-field appearance="outline">
                     <mat-label>UserId</mat-label>
                     <input matInput placeholder="Enter UserId" formControlName="userId" required type="text" class="user-input"/>
-                    <mat-error *ngIf="hasError('userId', 'required')"> User Id is required </mat-error>
-                    <mat-error *ngIf="hasError('userId', 'minlength')">Required minimum three chracters </mat-error>
+                    @if(hasError('userId', 'required')) {
+                    <mat-error> User Id is required </mat-error>
+                    }
+                    @if(hasError('userId', 'minlength')) {
+                    <mat-error>Required minimum three chracters </mat-error>
+                    }
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <mat-label>Password</mat-label>
                     <input matInput  [type]="hide ? 'password' : 'text'" formControlName="password" required />
                      <mat-icon (click)="hide = !hide" matSuffix> {{ hide ? 'visibility_off' : 'visibility' }}</mat-icon>
-                    <mat-error *ngIf="hasError('password', 'required')">Password is required.</mat-error>
-                    <mat-error *ngIf="hasError('password', 'minlength')">Required Minimum 8 characters.</mat-error>
+                    @if(hasError('password', 'required')) {
+                    <mat-error> Password is required </mat-error>
+                    }
+                    @if(hasError('password', 'minlength')) {
+                    <mat-error>Required Minimum 8 characters.</mat-error>
+                    }
                     </mat-form-field>
 
               <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid">Login
