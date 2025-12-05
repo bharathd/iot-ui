@@ -12,13 +12,13 @@
                 <mat-form-field appearance="outline">
                     <mat-label>User Name</mat-label>
                     <input matInput placeholder="Enter your name" formControlName="customerName" required type="text" class="user-input"/>
-                    <mat-error *ngIf="hasError('customerName', 'required')"> User Name is required </mat-error>
+                    <mat-error *ngIf="hasError('customerName', 'required')"> Customer Name is required </mat-error>
                     <mat-error *ngIf="hasError('customerName', 'minlength')">Required minimum three chracters </mat-error>
                 </mat-form-field>
                 <mat-form-field appearance="outline">
                     <input matInput placeholder="Enter Contact Number" type="tel" formControlName="mobileNumber" required (keypress)="onlyDigits($event)"/>
-                    <mat-error *ngIf="hasError('mobileNumber', 'required')">Contact Number is required.</mat-error>
-                    <mat-error *ngIf="hasError('mobileNumber', 'pattern')">Please enter a valid Contact Number.</mat-error>
+                    <mat-error *ngIf="hasError('mobileNumber', 'required')">Mobile Number is required.</mat-error>
+                    <mat-error *ngIf="hasError('mobileNumber', 'pattern')">Please enter a valid Mobile Number.</mat-error>
                 </mat-form-field>
                 <!-- <mat-form-field appearance="outline">
                     <input matInput placeholder="Enter Email" type="email" formControlName="email"/>
