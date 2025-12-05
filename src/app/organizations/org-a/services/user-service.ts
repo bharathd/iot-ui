@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { ApiService } from '../../../service/api-service';
 import { OrganizationDetails } from '../models/user';
 import { BehaviorSubject } from 'rxjs';
+import { AppConstant } from '../../../app.contstant';
 
 @Injectable({
   providedIn: 'root',
@@ -40,9 +41,17 @@ export class UserService {
 
   private loadOrgDetails(): OrganizationDetails | null {
     const data = localStorage.getItem('organizationDetails');
-    return data ? JSON.parse(data) : null;
+    if (!data) return AppConstant.ORGA;
+    const stored = JSON.parse(data);
+    return {
+      ...AppConstant.ORGA,
+      ...stored,
+      config: {
+        ...AppConstant.ORGA.config,
+        ...(stored.config || {})
+      }
+    };
   }
-
 
   generateOtp<B, R>(B: B) {
     return this.apiService.httpPost<B, R>('fas/init', B);

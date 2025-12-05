@@ -38,9 +38,12 @@ export class OtpPage implements OnInit {
       this.userDetails = state['userDetails'];
     }
   }
+  primaryBgImage = AppConstant.ORGA.config.backgroundImage;
 
   ngOnInit(): void {
     this.organizationDetails = this.userService.getOrganizationDetailsValue() || AppConstant.ORGA;
+    this.primaryBgImage = this.organizationDetails.config.backgroundImage;
+    document.documentElement.style.setProperty('--primary-bg', `url(${this.primaryBgImage})`);
     this.createOtpForm();
     this.startTimer();
   }
@@ -51,8 +54,8 @@ export class OtpPage implements OnInit {
       d2: ['', Validators.required],
       d3: ['', Validators.required],
       d4: ['', Validators.required],
-      d5: ['', Validators.required],
-      d6: ['', Validators.required]
+      // d5: ['', Validators.required],
+      // d6: ['', Validators.required]
     });
     this.otpForm.valueChanges.subscribe(() => {
       this.finalOtp = Object.values(this.otpForm.value).join('');
@@ -83,11 +86,11 @@ export class OtpPage implements OnInit {
     }
     const body = { customerId: this.userDetails.customerId, otp: this.finalOtp };
     this.userService.verifyOtp(body).subscribe({
-       next: () => {
+       next: (response) => {
         this.snackBar.open('OTP verified successfully', 'Close', {
           duration: 3000,
         });
-        this.router.navigate(['dashboard'], { relativeTo: this.route.parent });
+        this.router.navigate(['dashboard'], { relativeTo: this.route.parent, state: { redirectUrl: response } });
       },
       error: err => {
         this.snackBar.open(err.error.errors.message || 'Failed to verify OTP', 'Close', {

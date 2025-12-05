@@ -28,18 +28,34 @@ export class LoginPage  implements OnInit{
   loginForm!: FormGroup;
   isLoading = false;
   organizationDetails!: OrganizationDetails;
+  primaryBgImage = AppConstant.ORGA.config.backgroundImage;
+  fasToken = '';
+
   ngOnInit() {
-    this.organizationDetails = this.userService.getOrganizationDetailsValue() || AppConstant.ORGA;;
+    this.organizationDetails = this.userService.getOrganizationDetailsValue() || AppConstant.ORGA;
+    this.primaryBgImage = this.organizationDetails.config.backgroundImage;
+    document.documentElement.style.setProperty('--primary-bg', `url(${this.primaryBgImage})`);
+    this.fasToken = this.route.snapshot.queryParamMap.get('fas') || '';    
     this.createLoginForm();
   }
 
   createLoginForm() {
     this.loginForm = this.fb.group({
-      userName: ['', [Validators.required, Validators.minLength(3)]],
-      contactNumber: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
+      customerName: ['', [Validators.required, Validators.minLength(3)]],
+      mobileNumber: ['', [Validators.required, Validators.pattern(/^[6-9]\d{9}$/)]],
       // email: ['', Validators.pattern('^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$')],
     });
   }
+
+  onlyDigits(event: KeyboardEvent) {
+    const allowed = /[0-9]/;
+    if (!allowed.test(event.key)) {
+      event.preventDefault();
+      return false;
+    }
+    return true;
+  }
+
 
    hasError(controlName: string, errorName: string) {
     return this.loginForm.get(controlName)?.hasError(errorName);
@@ -48,7 +64,7 @@ export class LoginPage  implements OnInit{
   submitForm() {
     if (this.loginForm.invalid) return;
     this.isLoading = true;
-    const body = {...this.loginForm.value, organizationId: this.userService.getOrganizationIdValue(), fasToken: ''};
+    const body = {...this.loginForm.value, organizationId: this.userService.getOrganizationIdValue(), fasToken: this.fasToken};
     
     this.userService.generateOtp(body).subscribe({
        next: (response) => {

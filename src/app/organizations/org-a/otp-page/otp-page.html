@@ -1,7 +1,7 @@
 <div class="bg-container">
     <div class="main-bg">
         <div class="header-logo">
-            <img src="{{organizationDetails.logo}}" alt="{{organizationDetails.organizationName}}">
+            <img src="{{organizationDetails.config.logo}}" alt="{{organizationDetails.organizationName}}">
         </div>
         <div class="wifi-circle">
             <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
@@ -19,8 +19,8 @@
                     <input class="otp-input" maxlength="1" formControlName="d2" appOtpAutoFocus data-otp="1">
                     <input class="otp-input" maxlength="1" formControlName="d3" appOtpAutoFocus data-otp="2">
                     <input class="otp-input" maxlength="1" formControlName="d4" appOtpAutoFocus data-otp="3">
-                    <input class="otp-input" maxlength="1" formControlName="d5" appOtpAutoFocus data-otp="4">
-                    <input class="otp-input" maxlength="1" formControlName="d6" appOtpAutoFocus data-otp="5">
+                    <!-- <input class="otp-input" maxlength="1" formControlName="d5" appOtpAutoFocus data-otp="4">
+                    <input class="otp-input" maxlength="1" formControlName="d6" appOtpAutoFocus data-otp="5"> -->
                 </div>
                 <button mat-raised-button class="primary-button w-20" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
             </form>
