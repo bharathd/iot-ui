@@ -1,38 +1,44 @@
-import { Injectable } from '@angular/core';
+import { effect, Injectable, signal } from '@angular/core';
 import { ApiService } from '../../../service/api-service';
 import { OrganizationDetails } from '../models/user';
-import { BehaviorSubject } from 'rxjs';
 import { AppConstant } from '../../../app.contstant';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UserService {
-  constructor(private apiService: ApiService) {}
-
-  private orgIdSubject = new BehaviorSubject<string | null>(this.loadOrgId());
-  private orgDetailsSubject = new BehaviorSubject<OrganizationDetails | null>(this.loadOrgDetails());
   
-  
-  orgId$ = this.orgIdSubject.asObservable();
-  orgDetails$ = this.orgDetailsSubject.asObservable();
+  constructor(private apiService: ApiService) {
+    effect(() => {
+      const id = this.orgId();
+      if (id !== null) {
+        localStorage.setItem('organizationId', id);
+      }
+    });
+    effect(() => {
+      const details = this.orgDetails();
+      if (details !== null) {
+        localStorage.setItem('organizationDetails', JSON.stringify(details));
+      }
+    });
+  }
+  orgId = signal<string | null>(this.loadOrgId());
+  orgDetails = signal<OrganizationDetails | null>(this.loadOrgDetails());
 
   setOrganizationId(id: string) {
-    localStorage.setItem('organizationId', id);
-    this.orgIdSubject.next(id);
+    this.orgId.set(id);
   }
 
   setOrganizationDetails(details: OrganizationDetails) {
-    localStorage.setItem('organizationDetails', JSON.stringify(details));
-    this.orgDetailsSubject.next(details);
+    this.orgDetails.set(details);
   }
 
   getOrganizationIdValue() {
-    return this.orgIdSubject.value;
+    return this.orgId();
   }
 
   getOrganizationDetailsValue() {
-    return this.orgDetailsSubject.value;
+    return this.orgDetails();
   }
 
   private loadOrgId(): string | null {
