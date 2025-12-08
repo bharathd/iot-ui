@@ -85,12 +85,12 @@ export class OtpPage implements OnInit, OnDestroy {
       this.snackBar.open('OTP Expired', 'close', {duration: 3000,});
     }
     const body = { customerId: this.userDetails.customerId, otp: this.finalOtp };
-    this.userService.verifyOtp(body).subscribe({
+    this.userService.verifyOtp<unknown, { authUrl: string }>(body).subscribe({
        next: (response) => {
         this.snackBar.open('OTP verified successfully', 'Close', {
           duration: 3000,
         });
-        this.router.navigate(['dashboard'], { relativeTo: this.route.parent, state: { redirectUrl: response } });
+        this.router.navigate(['dashboard'], { relativeTo: this.route.parent, state: { redirectUrl: response.authUrl } });
       },
       error: err => {
         this.snackBar.open(err.error.errors.message || 'Failed to verify OTP', 'Close', {
