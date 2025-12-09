@@ -22,7 +22,7 @@
                     <!-- <input class="otp-input" maxlength="1" formControlName="d5" appOtpAutoFocus data-otp="4">
                     <input class="otp-input" maxlength="1" formControlName="d6" appOtpAutoFocus data-otp="5"> -->
                 </div>
-                <button mat-raised-button class="primary-button w-20" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
+                <button mat-raised-button class="primary-button w-20 mobile-margintop" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
             </form>
             <p>@if(otpExpired){<span (click)="resendOtp()" class="cursor-pointer"> Resend OTP </span> }@if(!otpExpired){<span>Resend OTP in {{timeLeft}} Sec </span>}</p>
         </div>

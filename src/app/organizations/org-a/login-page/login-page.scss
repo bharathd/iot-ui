@@ -1,0 +1,7 @@
+@use '../../../../partial-scss/variables' as *;
+.mat-mdc-text-field-wrapper {
+    width: 100%;
+    z-index: 0;
+    background: rgba(255, 253, 253, 0.39);
+    border: 2px solid $greenColor !important;
+}

@@ -165,7 +165,7 @@ h1,h2,h3,h4,h5,h6, p{
 }
 
 .header-logo img {
-    height: 5rem;
+    height: 6rem;
 }
 
 .wifi-circle img {
@@ -185,15 +185,10 @@ h1,h2,h3,h4,h5,h6, p{
 input {
     border: 1px solid $greenColor !important;
 }
-.user-input{
-    padding: 1rem;
-    border-radius: 5px;
-    width: 20rem;
 
-}
 .otp-input{
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 4rem;
+    height: 4rem;
     border-radius: 5px;
     text-align: center;
 }
@@ -245,7 +240,7 @@ button {
     gap: 0.3rem;
 }
 
-.footer-item span,a {
+.footer-item h5,a {
     color: $greenColor;
     text-decoration: none;
     font-size: 1.2rem;
@@ -266,7 +261,7 @@ button {
 
 .carousel-item{
     img{
-        height: 15rem;
+        height: 20rem;
     }
 }
 tr:nth-child(even) {
@@ -279,7 +274,7 @@ tr:nth-child(even) {
 }
 @media screen and (max-width: 480px) {
     .header-logo img {
-        height: 4rem;
+        height: 5rem;
     }
 
     .wifi-circle img {
@@ -291,7 +286,10 @@ tr:nth-child(even) {
     .flex-btwn-center {
     justify-content: space-around;
     }
-    .footer-item p, a {
+    .footer-item h5, a {
     font-size: 1rem;
+    }
+    .mobile-margintop{
+        margin-top: 5rem;
     }
 }
