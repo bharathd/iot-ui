@@ -19,8 +19,8 @@
                         <mat-error>Required minimum three characters</mat-error>
                     }
                 </mat-form-field>
-                <mat-form-field appearance="outline">
-                    <input matInput placeholder="Enter Mobile Number" type="tel" formControlName="mobileNumber" required (keypress)="onlyDigits($event)"/>
+                <mat-form-field appearance="outline" class="input">
+                    <input matInput placeholder="Enter Mobile Number" type="tel" formControlName="mobileNumber" required (keypress)="onlyDigits($event)" />
                     @if(hasError('mobileNumber', 'required')) {
                         <mat-error>Mobile Number is required</mat-error>
                     }
@@ -32,7 +32,7 @@
                     <input matInput placeholder="Enter Email" type="email" formControlName="email"/>
                     <mat-error @if="hasError('email', 'pattern')">Please enter a valid Email Id.</mat-error>
                 </mat-form-field> -->
-              <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid || isLoading">Send OTP
+              <button  mat-raised-button class="primary-button w-20 mobile-margintop" type="submit" [disabled]="loginForm.invalid || isLoading">Send OTP
               </button>
           </form>
         </div>
