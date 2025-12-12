@@ -1,16 +1,20 @@
 <div class="bg-container">
     <div class="main-bg">
-        <div class="header-logo mb-4">
-            <img src="{{organizationDetails.config.logo}}" alt="{{organizationDetails.organizationName}}">
-        </div>
-    
-        <div class="flex-column mt-3">
-            <h1 class="wifi-title mb-3">Verification Sucessfull !</h1>
+        <div class="header-bg">
+            <div class="wifi-container">
+                <div class="header-logo-bg">
+                    <mat-icon>wifi</mat-icon>
+                </div>
+            </div>
+         </div>
+        <div class="flex-column">
+            <h1 class="wifi-title">WiFi Connected</h1>
+            <p class="wifi-desc">You are now connected to the internet.</p>
             <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
                 <div class="carousel-inner">
                     <div *ngFor="let img of images; let i = index"  class="carousel-item" 
                         [class.active]="i === 0">
-                        <img class="d-block" [src]="img" [alt]="'Slide ' + (i + 1)">
+                        <img class="d-block carousel-img" [src]="img" [alt]="'Slide ' + (i + 1)">
                     </div>
                 </div>
                 <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
@@ -23,8 +27,7 @@
                 </button>
 
             </div>
-           <a [href]="redirectUrl" target="_self" class="primary-button w-20 mobile-margintop">Connect Wifi</a>
-
+           <a [href]="redirectUrl" target="_self" class="primary-button w-20 mt-3"><span>Start Browsing</span> <span><mat-icon>language</mat-icon></span></a>
         </div>
     </div>
     <app-footer></app-footer>

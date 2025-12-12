@@ -1,15 +1,20 @@
 <div class="bg-container">
+    <div class="header">
+        <p></p>
+        <h3>Get Connected</h3>
+        <p></p>
+    </div>
     <div class="main-bg">
-        <div class="header-logo">
-            <img src="{{organizationDetails.config.logo}}" alt="{{organizationDetails.organizationName}}">
-        </div>
-        <div class="wifi-circle">
-            <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
+        <div class="wifi-container">
+            <div class="header-logo-bg">
+                <mat-icon>wifi</mat-icon>
+            </div>
         </div>
         <div class="flex-column mt-3">
-            <h1 class="wifi-title">Unlock free WiFi around</h1>
+            <h1 class="wifi-title">Welcome To {{organizationDetails.config.welcomeTitle}} WiFi</h1>
+            <p class="wifi-desc">Just a few details to get you online securely</p>
             <form [formGroup]="loginForm" (ngSubmit)="submitForm()" class="login-form">
-                <mat-form-field appearance="outline">
+                <mat-form-field appearance="outline" class="min-width">
                     <mat-label>User Name</mat-label>
                     <input matInput placeholder="Enter your name" formControlName="customerName" required type="text" class="user-input"/>
                     @if(hasError('customerName', 'required')) {
@@ -32,7 +37,7 @@
                     <input matInput placeholder="Enter Email" type="email" formControlName="email"/>
                     <mat-error @if="hasError('email', 'pattern')">Please enter a valid Email Id.</mat-error>
                 </mat-form-field> -->
-              <button  mat-raised-button class="primary-button w-20 mobile-margintop" type="submit" [disabled]="loginForm.invalid || isLoading">Send OTP
+              <button  mat-raised-button class="primary-button w-20" type="submit" [disabled]="loginForm.invalid || isLoading"><span>Send OTP</span><span><mat-icon>arrow_forward</mat-icon></span>
               </button>
           </form>
         </div>
