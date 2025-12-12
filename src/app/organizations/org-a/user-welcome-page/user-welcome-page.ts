@@ -16,7 +16,6 @@ import { CommonService } from '../../../service/common-service';
 export class UserWelcomePage {
   primaryColor = AppConstant.ORGA.config.primaryColor;
   secondaryColor = AppConstant.ORGA.config.secondaryColor;
-  primaryBgImage = AppConstant.ORGA.config.backgroundImage;
   organizationDetails!: OrganizationDetails;
   organizationConfig = AppConstant.ORGA;
   organizationId = '';
@@ -26,7 +25,12 @@ export class UserWelcomePage {
     private commonService: CommonService,
     private route: ActivatedRoute,
     private router: Router
-  ) {}
+  ) {
+    const state = this.router.getCurrentNavigation()?.extras.state as {orgId: string};
+    if(state?.orgId) {
+      this.organizationId = state.orgId;
+    }
+  }
 
   ngOnInit() {
     const orgId = this.route.snapshot.parent?.paramMap.get('organizationId');
@@ -35,7 +39,6 @@ export class UserWelcomePage {
     this.getOrganizationDetails();
     document.documentElement.style.setProperty('--primary-color', this.primaryColor);
     document.documentElement.style.setProperty('--secondary-color', this.secondaryColor);
-    document.documentElement.style.setProperty('--primary-bg', `url(${this.primaryBgImage})`);
   }
 
   getOrganizationDetails() {
@@ -61,10 +64,8 @@ export class UserWelcomePage {
         this.userService.setOrganizationDetails(this.organizationConfig);
         this.primaryColor = this.organizationConfig.config.primaryColor;
         this.secondaryColor = this.organizationConfig.config.secondaryColor;
-        this.primaryBgImage = this.organizationConfig.config.backgroundImage;
         document.documentElement.style.setProperty('--primary-color', this.primaryColor);
         document.documentElement.style.setProperty('--secondary-color', this.secondaryColor);
-        document.documentElement.style.setProperty('--primary-bg', `url(${this.primaryBgImage})`);
         },
        error: () => {
         this.organizationConfig = AppConstant.ORGA;

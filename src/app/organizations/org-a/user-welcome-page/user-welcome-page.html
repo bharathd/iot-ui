@@ -1,17 +1,16 @@
 <div class="bg-container">
     <div class="main-bg">
-        <div class="header-logo">
-            <img src="{{organizationConfig.config.logo}}" alt="{{organizationConfig.organizationName}}">
+        <div class="header-logo-bg">
+             <mat-icon>wifi</mat-icon>
         </div>
-        <div class="wifi-circle">
-            <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
-        </div>
-        <div class="flex-column mt-3">
-            <h1 class="wifi-title">Welcome to {{organizationConfig.config.welcomeTitle}} !</h1>
-            <p class="wifi-subtitle">Unlock free WiFi around</p>
-            <p class="wifi-desc">Secure and fast WiFi for you</p>
+        <div class="flex-column">
+            <h1 class="wifi-title">Free {{organizationConfig.config.welcomeTitle}} WiFi</h1>
+            <p class="wifi-desc">Just a few details to get you online securely</p>
+            <div class="wifi-logo-container">
+                <img src="../../../../assets/images/wifi-logo.svg" alt="WiFi">
+            </div>
 
-            <button type="button" mat-raised-button class="primary-button w-20 mobile-margintop" (click)="movetoLogin()"> Unlock WiFi</button>
+            <button type="button" mat-raised-button class="primary-button w-20 " (click)="movetoLogin()"><span>Continue to WiFi</span> <span><mat-icon>arrow_forward</mat-icon></span></button>
         </div>
     </div>
     <app-footer></app-footer>

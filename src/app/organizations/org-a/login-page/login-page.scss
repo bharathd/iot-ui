@@ -2,6 +2,26 @@
 .mat-mdc-text-field-wrapper {
     width: 100%;
     z-index: 0;
-    background: rgba(255, 253, 253, 0.39);
+    background: #fff;
     border: 2px solid $greenColor !important;
+}
+
+.min-width{
+    min-width: 400px;
+}
+
+.primary-button{
+    position: absolute;
+    bottom: 5rem;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+    .min-width{
+        min-width: 300px;
+    }
 }
