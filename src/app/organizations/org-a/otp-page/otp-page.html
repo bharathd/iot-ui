@@ -1,18 +1,18 @@
 <div class="bg-container">
+    <div class="header">
+        <mat-icon class="cursor-pointer" routerLink="../login">arrow_backward</mat-icon>
+        <h3>Unlock WiFi</h3>
+        <p></p>
+    </div>
     <div class="main-bg">
-        <div class="header-logo">
-            <img src="{{organizationDetails.config.logo}}" alt="{{organizationDetails.organizationName}}">
-        </div>
-        <div class="wifi-circle">
-            <img src="../assets/images/kapila-wifi-router-logo.svg" alt="WiFi">
+        <div class="wifi-container">
+            <div class="header-logo-bg">
+                <mat-icon>lock_open</mat-icon>
+            </div>
         </div>
         <div class="flex-column mt-3">
-            <div class="flex-center">
-                <mat-icon class="back-arrow" routerLink="../login">keyboard_backspace</mat-icon>
-                <h1 class="wifi-title">Verify Your Identity</h1>
-            </div>
-            <p class="wifi-desc">Enter the 6-digit code sent to +91{{userDetails.mobileNumber}}</p>
-
+            <h1 class="wifi-title">Enter Verification Code</h1>
+            <p class="wifi-desc">WE sent 4-digit code to +91 {{userDetails.mobileNumber}}</p>
             <form [formGroup]="otpForm" class="otp-wrapper" (ngSubmit)="verifyOtp()" class="flex-column">
                 <div class="flex-center">
                     <input class="otp-input" maxlength="1" formControlName="d1" appOtpAutoFocus data-otp="0">
@@ -22,9 +22,9 @@
                     <!-- <input class="otp-input" maxlength="1" formControlName="d5" appOtpAutoFocus data-otp="4">
                     <input class="otp-input" maxlength="1" formControlName="d6" appOtpAutoFocus data-otp="5"> -->
                 </div>
-                <button mat-raised-button class="primary-button w-20 mobile-margintop" [disabled]="otpForm.invalid" type="submit"> Verify OTP</button>
+                <p class="wifi-desc">@if(otpExpired){<span (click)="resendOtp()" class="resend-otp"> Resend OTP </span> }@if(!otpExpired){<span>Didn’t receive it? <span class="resend-otp"> Resend in {{timeLeft}} </span></span>}</p>
+                <button mat-raised-button class="primary-button w-20 mt-3" [disabled]="otpForm.invalid" type="submit"><span> Verify & Connect </span> <span><mat-icon>wifi</mat-icon></span></button>
             </form>
-            <p>@if(otpExpired){<span (click)="resendOtp()" class="cursor-pointer"> Resend OTP </span> }@if(!otpExpired){<span>Resend OTP in {{timeLeft}} Sec </span>}</p>
         </div>
     </div>
     <app-footer></app-footer>

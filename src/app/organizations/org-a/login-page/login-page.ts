@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { MaterialComponentsModule } from '../../../app-angular-material.module';
 import { CommonModule } from '@angular/common';
 import { Footer } from '../footer/footer';
@@ -83,5 +83,9 @@ export class LoginPage  implements OnInit{
         });
       },
     })
+  }
+
+  goBack() {
+    this.router.navigate(['/', this.organizationId], { relativeTo: this.route, state: {orgId: this.organizationId}  });
   }
 }

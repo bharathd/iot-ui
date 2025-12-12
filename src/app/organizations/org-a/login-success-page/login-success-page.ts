@@ -5,10 +5,11 @@ import { AppConstant } from '../../../app.contstant';
 import { OrganizationDetails } from '../models/user';
 import { UserService } from '../services/user-service';
 import { Router } from '@angular/router';
+import { MaterialComponentsModule } from '../../../app-angular-material.module';
 
 @Component({
   selector: 'app-login-success-page',
-  imports: [CommonModule, Footer],
+  imports: [CommonModule, Footer, MaterialComponentsModule],
   templateUrl: './login-success-page.html',
   styleUrl: './login-success-page.scss',
 })
